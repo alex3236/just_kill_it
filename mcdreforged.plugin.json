@@ -1,0 +1,20 @@
+{
+    "id": "just_kill_it",
+    "version": "1.0.0",
+    "name": "Just Kill It",
+    "description": {
+        "en_us": "Kill the Minecraft server if it can't stop",
+        "zh_cn": "服务端关闭时间过长时杀死进程"
+    },
+    "author": [
+        "Alex3236"
+    ],
+    "link": "https://github.com/alex3236/just_kill_it",
+    "dependencies": {
+        "mcdreforged": ">=2.13.0"
+    },
+    "resources": [
+        "lang",
+        "LICENSE"
+    ]
+}

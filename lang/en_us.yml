@@ -1,0 +1,3 @@
+just_kill_it.stopping: Server stopping pattern detected, timeout {0}s from now
+just_kill_it.saved: Server saved pattern detected, timeout {0}s from now
+just_kill_it.killing: §cKilling server since timeout reached
