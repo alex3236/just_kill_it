@@ -60,3 +60,8 @@ def on_load(_, old):
 def on_unload(_):
     global stop_sign
     stop_sign = True
+
+
+def on_server_stop(_, _code):
+    global stop_sign
+    stop_sign = True
