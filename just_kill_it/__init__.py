@@ -8,6 +8,7 @@ from just_kill_it.config import Configuration
 
 stop_sign: bool = False
 server_saved: bool = False
+server_stopping: bool = False
 config: Optional[Configuration] = None
 psi: Optional[PluginServerInterface] = ServerInterface.psi()
 metadata: Metadata = psi.get_self_metadata()
@@ -42,11 +43,14 @@ def wait_for_exit():
 
 def on_info(_, info: Info):
     global server_saved
+    global server_stopping
+
     if not info.is_user:
         if re.fullmatch(config.stopping_pattern, info.content):
             psi.logger.info(tr('stopping', config.save_timeout))
+            server_stopping = True
             wait_for_save()
-        if re.fullmatch(config.saved_pattern, info.content):
+        if re.fullmatch(config.saved_pattern, info.content) and server_stopping:
             psi.logger.info(tr('saved', config.exit_timeout))
             server_saved = True
             wait_for_exit()
@@ -58,5 +62,10 @@ def on_load(_, old):
 
 
 def on_unload(_):
+    global stop_sign
+    stop_sign = True
+
+
+def on_server_stop(_, _code):
     global stop_sign
     stop_sign = True

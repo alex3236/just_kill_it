@@ -8,7 +8,7 @@ import just_kill_it
 class Configuration(Serializable):
     stopping_pattern: str = 'Stopping the server'
     save_timeout: int = 120
-    saved_pattern: str = 'All dimensions are saved'
+    saved_pattern: str = '.*All dimensions are saved'
     exit_timeout: int = 10
 
     @staticmethod
